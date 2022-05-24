@@ -7,9 +7,6 @@ export class HouseController {
   private userResitory = AppDataSource.getRepository(User);
 
   async all(request: Request, response: Response, next: NextFunction) {
-    const target = await this.houseResitory.findOneBy({ id: 1 });
-    target.user.then((res) => {});
-
     return this.houseResitory.find();
   }
 
@@ -42,6 +39,7 @@ export class HouseController {
     let userToRemove = await this.houseResitory.findOneBy({
       id: request.params.id,
     });
-    await this.houseResitory.remove(userToRemove);
+    userToRemove.deleteDate = new Date();
+    return this.houseResitory.save(userToRemove);
   }
 }

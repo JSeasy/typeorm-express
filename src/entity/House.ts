@@ -37,7 +37,9 @@ export class House {
   @DeleteDateColumn()
   deleteDate: Date;
 
-  @ManyToOne((type) => User, {})
+  @ManyToOne((type) => User, {
+    eager: true,
+  })
   @JoinColumn()
-  user: Promise<User>;
+  user: User;
 }
