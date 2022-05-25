@@ -1,5 +1,6 @@
 import { UserController } from "./controller/UserController";
 import { HouseController } from "./controller/HouseController";
+import { MenuController } from "./controller/MenuController";
 
 export const Routes = [
   {
@@ -26,6 +27,7 @@ export const Routes = [
     controller: UserController,
     action: "remove",
   },
+  // house
   {
     method: "get",
     route: "/houses",
@@ -49,5 +51,37 @@ export const Routes = [
     route: "/houses/:id",
     controller: HouseController,
     action: "remove",
+  },
+
+  //menu
+  {
+    method: "get",
+    route: "/menus",
+    controller: MenuController,
+    action: "all",
+  },
+  {
+    method: "get",
+    route: "/menus/:id",
+    controller: MenuController,
+    action: "one",
+  },
+  {
+    method: "post",
+    route: "/menus",
+    controller: MenuController,
+    action: "save",
+  },
+  {
+    method: "delete",
+    route: "/menus/:id",
+    controller: MenuController,
+    action: "remove",
+  },
+  {
+    method: "get",
+    route: "/getTreeMenu",
+    controller: MenuController,
+    action: "getTree",
   },
 ];

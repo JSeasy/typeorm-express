@@ -2,6 +2,7 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { User } from "./entity/User";
 import { House } from "./entity/House";
+import { Menu } from "./entity/Menu";
 export const AppDataSource = new DataSource({
   type: "mysql",
   host: "118.31.188.117",
@@ -12,7 +13,7 @@ export const AppDataSource = new DataSource({
   synchronize: true,
   charset: "utf8",
   logging: false,
-  entities: [User, House],
+  entities: [User, House, Menu],
   migrations: [],
   subscribers: [],
 });

@@ -4,15 +4,13 @@ import {
   Column,
   JoinColumn,
   ManyToOne,
-  CreateDateColumn,
-  UpdateDateColumn,
-  DeleteDateColumn,
 } from "typeorm";
 
+import BaseEntity from "./BaseEntity";
 import { User } from "./User";
 
 @Entity()
-export class House {
+export class House extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -27,15 +25,6 @@ export class House {
 
   @Column()
   compleYear: string;
-
-  @CreateDateColumn()
-  createdDate: Date;
-
-  @UpdateDateColumn()
-  updatedDate: Date;
-
-  @DeleteDateColumn()
-  deleteDate: Date;
 
   @ManyToOne((type) => User, {
     eager: true,

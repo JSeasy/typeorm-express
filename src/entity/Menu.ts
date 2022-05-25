@@ -1,35 +1,30 @@
 import {
   Entity,
-  PrimaryGeneratedColumn,
+  Tree,
   Column,
-  JoinColumn,
-  ManyToOne,
-  CreateDateColumn,
-  UpdateDateColumn,
-  DeleteDateColumn,
+  PrimaryGeneratedColumn,
   OneToMany,
+  TreeParent,
+  ManyToMany,
+  ManyToOne,
+  JoinColumn,
 } from "typeorm";
-
-import { User } from "./User";
+import BaseEntity from "./BaseEntity";
 
 @Entity()
-export class House {
+export class Menu extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  name: string;
+  path: string;
 
-  @ManyToOne(() => House)
+  @Column()
+  componentName: string;
+
+  @Column()
+  menuName: string;
+
   @Column()
   parentId: number;
-
-  @CreateDateColumn()
-  createdDate: Date;
-
-  @UpdateDateColumn()
-  updatedDate: Date;
-
-  @DeleteDateColumn()
-  deleteDate: Date;
 }
