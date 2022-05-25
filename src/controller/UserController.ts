@@ -25,4 +25,14 @@ export class UserController {
     userToRemove.deleteDate = new Date();
     return this.userRepository.save(userToRemove);
   }
+
+  async regist(request: Request, response: Response, next: NextFunction) {
+    const { userName } = request.body;
+    const found = await this.userRepository.findOne({ where: { userName } });
+    if (found) {
+      return "用户已注册";
+    } else {
+      return this.userRepository.save(request.body);
+    }
+  }
 }

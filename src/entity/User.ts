@@ -8,12 +8,21 @@ export class User extends BaseEntity {
   @Column()
   userName: string;
 
-  @Column()
+  @Column({
+    default: 0,
+  })
   age: number;
 
-  @Column()
+  @Column({
+    default: "",
+  })
   city: string;
 
-  @Column()
+  @Column({
+    default: "",
+  })
   school: string;
+
+  @Column()
+  password: string;
 }
